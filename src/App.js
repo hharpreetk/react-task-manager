@@ -21,10 +21,16 @@ export default function App() {
     ))
     setTasks(newTasks);
   }
+  const deleteTask=(id)=>{
+    const newTasks = tasks.filter((task)=>(
+      task.id !== id
+    ))
+    setTasks(newTasks);
+  }
   return (
     <div className="App">
       <TaskInput addTask={addTask} />
-      <TaskList tasks={tasks} toggleDone={toggleDone} />
+      <TaskList tasks={tasks} toggleDone={toggleDone} deleteTask={deleteTask} />
     </div>
   );
 }
