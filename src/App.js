@@ -1,25 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from "react";
+import TaskList from "./TaskList";
+import TaskInput from "./TaskInput";
 
-function App() {
+export default function App() {
+  const [tasks, setTasks] = useState(initialTasks);
+  const addTask = (text) => {
+    setTasks([
+      ...tasks,
+      {
+        id: nextId++,
+        text: text,
+        done: false
+      }
+    ]);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TaskInput addTask={addTask} />
+      <TaskList tasks={tasks} />
     </div>
   );
 }
 
-export default App;
+let nextId = 3;
+const initialTasks = [
+  { id: 0, text: "Visit Kafka Museum", done: true },
+  { id: 1, text: "Watch a puppet show", done: false },
+  { id: 2, text: "Lennon Wall pic", done: false }
+];
