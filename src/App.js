@@ -15,10 +15,16 @@ export default function App() {
       }
     ]);
   };
+  const toggleDone = (id, done)=>{
+    const newTasks = tasks.map((task)=>(
+      id===task.id ? {...task, done: done} : task
+    ))
+    setTasks(newTasks);
+  }
   return (
     <div className="App">
       <TaskInput addTask={addTask} />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} toggleDone={toggleDone} />
     </div>
   );
 }
