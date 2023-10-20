@@ -5,16 +5,17 @@ import TaskInput from "./TaskInput";
 
 export default function App() {
   const [tasks, setTasks] = useState(initialTasks);
-
+  const [nextId, setNextId] = useState(3);
   const addTask = (text) => {
     setTasks([
       ...tasks,
       {
-        id: nextId++,
+        id: nextId,
         text: text,
         done: false,
       },
     ]);
+    setNextId(nextId+1);
   };
 
   const modifyTask = (id, text, done) => {
@@ -37,7 +38,6 @@ export default function App() {
   );
 }
 
-let nextId = 3;
 const initialTasks = [
   { id: 0, text: "Visit Kafka Museum", done: true },
   { id: 1, text: "Watch a puppet show", done: false },
