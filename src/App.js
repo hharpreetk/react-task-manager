@@ -5,6 +5,7 @@ import TaskInput from "./TaskInput";
 
 export default function App() {
   const [tasks, setTasks] = useState(initialTasks);
+
   const addTask = (text) => {
     setTasks([
       ...tasks,
@@ -15,31 +16,23 @@ export default function App() {
       },
     ]);
   };
-  const toggleDone = (id, done) => {
+
+  const modifyTask = (id, text, done) => {
     const newTasks = tasks.map((task) =>
-      id === task.id ? { ...task, done: done } : task
+      id === task.id ? { ...task, text, done } : task
     );
     setTasks(newTasks);
   };
+
   const deleteTask = (id) => {
     const newTasks = tasks.filter((task) => task.id !== id);
     setTasks(newTasks);
   };
-  const changeTask = (id, text) => {
-    const newTasks = tasks.map((task) =>
-      id === task.id ? { ...task, text: text } : task
-    );
-    setTasks(newTasks);
-  };
+
   return (
     <div className="App">
       <TaskInput addTask={addTask} />
-      <TaskList
-        tasks={tasks}
-        toggleDone={toggleDone}
-        deleteTask={deleteTask}
-        changeTask={changeTask}
-      />
+      <TaskList tasks={tasks} modifyTask={modifyTask} deleteTask={deleteTask} />
     </div>
   );
 }

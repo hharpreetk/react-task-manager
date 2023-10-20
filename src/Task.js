@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Task({ task, toggleDone, deleteTask, changeTask }) {
+export default function Task({ task, modifyTask, deleteTask }) {
   const [editing, setEditing] = useState(false);
   let textContent;
   if (editing) {
@@ -8,7 +8,7 @@ export default function Task({ task, toggleDone, deleteTask, changeTask }) {
       <>
         <input
           value={task.text}
-          onChange={(e) => changeTask(task.id, e.target.value)}
+          onChange={(e) => modifyTask(task.id, e.target.value, task.done)}
           required
         />
         <button onClick={() => setEditing(false)}>Save</button>
@@ -28,7 +28,7 @@ export default function Task({ task, toggleDone, deleteTask, changeTask }) {
         type="checkbox"
         checked={task.done}
         onChange={(e) => {
-          toggleDone(task.id, e.target.checked);
+          modifyTask(task.id, task.text, e.target.checked);
         }}
       />
       {textContent}
