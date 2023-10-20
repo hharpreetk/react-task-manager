@@ -1,7 +1,8 @@
 import Task from "./Task";
 
 export default function TaskList({ tasks, modifyTask, deleteTask }) {
-  if (!tasks) return;
+  // Render a list of tasks 
+  if (!tasks) return; // Early return if there are no tasks
   return (
     <ul>
       {tasks.map((task) => (

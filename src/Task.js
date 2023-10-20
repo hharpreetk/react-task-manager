@@ -1,9 +1,13 @@
 import { useState } from "react";
 
 export default function Task({ task, modifyTask, deleteTask }) {
+  // State for handling task text editing
   const [editing, setEditing] = useState(false);
+
   let textContent;
+
   if (editing) {
+    // Display an input field for editing
     textContent = (
       <>
         <input
@@ -15,6 +19,7 @@ export default function Task({ task, modifyTask, deleteTask }) {
       </>
     );
   } else {
+    // Display task text and an 'Edit' button
     textContent = (
       <>
         {task.text}
