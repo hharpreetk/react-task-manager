@@ -4,8 +4,8 @@ import TaskList from "./TaskList";
 import TaskInput from "./TaskInput";
 
 export default function App() {
-  const [tasks, setTasks] = useState(initialTasks);
-  const [nextId, setNextId] = useState(3);
+  const [tasks, setTasks] = useState([]);
+  const [nextId, setNextId] = useState(0);
   const addTask = (text) => {
     setTasks([
       ...tasks,
@@ -37,9 +37,3 @@ export default function App() {
     </div>
   );
 }
-
-const initialTasks = [
-  { id: 0, text: "Visit Kafka Museum", done: true },
-  { id: 1, text: "Watch a puppet show", done: false },
-  { id: 2, text: "Lennon Wall pic", done: false },
-];
