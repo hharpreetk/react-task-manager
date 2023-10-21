@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { useTasksDispatch } from "./TasksContext";
+import { useTasks } from "./TasksContext";
 
 export default function Task({ task }) {
   // State for handling task text editing
   const [editing, setEditing] = useState(false);
   const [editedText, setEditedText] = useState(task.text); // State to track edited text
 
-  // Access tasks state and dispatch function from context
-  const dispatch = useTasksDispatch();
+  // Access dispatch function from context
+  const {dispatch} = useTasks();
 
   // Function to modify an existing task (update text and done status)
   const modifyTask = (id, text, done) => {

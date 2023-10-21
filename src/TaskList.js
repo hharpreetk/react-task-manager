@@ -3,7 +3,7 @@ import { useTasks } from "./TasksContext";
 
 export default function TaskList() {
   // Access tasks state from context
-  const tasks = useTasks();
+  const {tasks} = useTasks();
 
   if (!tasks) return; // Early return if there are no tasks
 

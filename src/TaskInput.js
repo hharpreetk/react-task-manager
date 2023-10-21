@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { useTasks, useTasksDispatch } from "./TasksContext";
+import { useTasks } from "./TasksContext";
 
 export default function TaskInput() {
   // State for input text
   const [text, setText] = useState("");
 
   // Access tasks state and dispatch function from context
-  const tasks = useTasks();
-  const dispatch = useTasksDispatch();
+  const {tasks, dispatch} = useTasks();
 
   // Function to add a new task
   const addTask = (text) => {

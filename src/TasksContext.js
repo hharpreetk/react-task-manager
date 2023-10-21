@@ -2,7 +2,6 @@ import { useReducer, useContext, createContext } from "react";
 
 // Create a context for tasks state and dispatch functions
 const TasksContext = createContext(null);
-const TasksDispatchContext = createContext(null);
 
 // A Provider component to manage tasks state and dispatch
 export function TasksProvider({ children }) {
@@ -11,22 +10,15 @@ export function TasksProvider({ children }) {
 
   return (
     // Provide task state and dispatch functions through context
-    <TasksContext.Provider value={tasks}>
-      <TasksDispatchContext.Provider value={dispatch}>
-        {children}
-      </TasksDispatchContext.Provider>
+    <TasksContext.Provider value={{ tasks, dispatch }}>
+      {children}
     </TasksContext.Provider>
   );
 }
 
-// Custom hook to access tasks state
+// Custom hook to access tasks state and dispatch functions
 export function useTasks() {
   return useContext(TasksContext);
-}
-
-// Custom hook to access tasks dispatch functions
-export function useTasksDispatch() {
-  return useContext(TasksDispatchContext);
 }
 
 // Reducer function to specify state updates based on actions
