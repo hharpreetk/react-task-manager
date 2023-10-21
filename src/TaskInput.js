@@ -1,20 +1,35 @@
-/* eslint-disable react/jsx-no-comment-textnodes */
 import { useState } from "react";
+import { useTasks, useTasksDispatch } from "./TasksContext";
 
-export default function TaskInput({ addTask }) {
-  //? Use custom hook for input and error handling
+export default function TaskInput() {
   // State for input value and error handling
   const [value, setValue] = useState("");
-  //? Seperate componenet for error message
   const [error, setError] = useState(null);
 
+  // Access tasks state and dispatch function from context
+  const tasks = useTasks();
+  const dispatch = useTasksDispatch();
+
+  // Function to add a new task
+  const addTask = (text) => {
+    // Generate a new task ID by finding the maximum ID in existing tasks
+    const nextId =
+      tasks.length > 0 ? Math.max(...tasks.map((task) => task.id)) + 1 : 0;
+
+    // Dispatch an action to add the task
+    dispatch({ type: "add", id: nextId, text });
+  };
+
+  // TODO: Enable or Disable the `Add Task` button in response to user input
   // Function to handle form submission and add a new task
-  // TODO: Do not add duplicate tasks
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value) {
+      // TODO: Dispatch an error action to the reducer
+      // Set an error if the input is empty
       setError(Error("Input cannot be empty."));
     } else {
+      // Clear any existing error and add the task
       setError(null);
       addTask(value);
       setValue("");
