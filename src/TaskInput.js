@@ -6,7 +6,7 @@ export default function TaskInput() {
   const [text, setText] = useState("");
 
   // Access tasks state and dispatch function from context
-  const {tasks, dispatch} = useTasks();
+  const { tasks, dispatch } = useTasks();
 
   // Function to add a new task
   const addTask = (text) => {
@@ -29,14 +29,42 @@ export default function TaskInput() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={text}
-        maxLength={255}
-        onChange={(e) => setText(e.target.value)}
-      />
-      <button disabled={!text.trim()}>Add Task</button>
-    </form>
+    <div className="addTask mx-auto w-full max-w-6xl">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-light dark:bg-dark m-5 flex items-center gap-2 px-4 py-3"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="text-primary -mx-0.5 h-6 w-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <input
+          type="text"
+          value={text}
+          maxLength={255}
+          onChange={(e) => setText(e.target.value)}
+          className="min-w-0 flex-1 border-none bg-transparent p-1 focus:outline-none focus:ring-0 dark:text-white"
+          placeholder="Add a Task"
+          autoFocus
+        />
+        <button
+          disabled={!text.trim()}
+          aria-label="Add"
+          className="bg-primary hover:bg-primary_hover rounded-lg px-3 py-2 text-center text-sm font-medium text-white focus:outline-none focus:ring-0 disabled:bg-light disabled:text-gray-500 dark:disabled:bg-dark dark:disabled:text-slate-400"
+        >
+          Add
+        </button>
+      </form>
+    </div>
   );
 }

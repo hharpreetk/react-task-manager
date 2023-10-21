@@ -3,18 +3,23 @@ import { useTasks } from "./TasksContext";
 
 export default function TaskList() {
   // Access tasks state from context
-  const {tasks} = useTasks();
+  const { tasks } = useTasks();
 
   if (!tasks) return; // Early return if there are no tasks
 
   // Render a list of tasks
   return (
-    <ul>
-      {tasks.map((task) => (
-        <li key={task.id}>
-          <Task task={task} />
-        </li>
-      ))}
-    </ul>
+    <div className="tasks mx-auto w-full max-w-6xl">
+      <ul className="mx-5 my-2 flex flex-1 list-none flex-col">
+        {tasks.map((task) => (
+          <li
+            key={task.id}
+            className="border-r-1 bg-light dark:bg-dark mt-2 flex cursor-pointer flex-wrap items-center gap-3 px-4 shadow-sm hover:bg-gray-50 dark:hover:bg-slate-950"
+          >
+            <Task task={task} />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
