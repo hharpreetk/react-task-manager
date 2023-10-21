@@ -20,12 +20,10 @@ export default function TaskInput() {
     dispatch({ type: "add", id: nextId, text });
   };
 
-  // TODO: Enable or Disable the `Add Task` button in response to user input
   // Function to handle form submission and add a new task
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value) {
-      // TODO: Dispatch an error action to the reducer
       // Set an error if the input is empty
       setError(Error("Input cannot be empty."));
     } else {
@@ -43,7 +41,7 @@ export default function TaskInput() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button>Add Task</button>
+      <button disabled={!value}>Add Task</button>
       {error && <p>{error.message}</p>}
     </form>
   );
