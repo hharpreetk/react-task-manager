@@ -54,13 +54,13 @@ export default function TaskInput() {
           maxLength={255}
           onChange={(e) => setText(e.target.value)}
           className="min-w-0 flex-1 border-none bg-transparent p-1 focus:outline-none focus:ring-0 dark:text-white"
-          placeholder="Add a Task"
+          placeholder="Try Typing here..."
           autoFocus
         />
         <button
           disabled={!text.trim()}
           aria-label="Add"
-          className="bg-primary hover:bg-primary_hover rounded-lg px-3 py-2 text-center text-sm font-medium text-white focus:outline-none focus:ring-0 disabled:bg-light disabled:text-gray-500 dark:disabled:bg-dark dark:disabled:text-slate-400"
+          className="bg-primary hover:bg-primary_hover disabled:bg-gray-200 rounded-lg px-3 py-2 text-center text-sm font-medium text-white focus:outline-none focus:ring-0 disabled:text-gray-500 dark:disabled:bg-opacity-10 dark:disabled:text-gray-500"
         >
           Add
         </button>
