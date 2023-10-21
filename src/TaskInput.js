@@ -2,9 +2,8 @@ import { useState } from "react";
 import { useTasks, useTasksDispatch } from "./TasksContext";
 
 export default function TaskInput() {
-  // State for input value and error handling
-  const [value, setValue] = useState("");
-  const [error, setError] = useState(null);
+  // State for input text
+  const [text, setText] = useState("");
 
   // Access tasks state and dispatch function from context
   const tasks = useTasks();
@@ -23,14 +22,10 @@ export default function TaskInput() {
   // Function to handle form submission and add a new task
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!value) {
-      // Set an error if the input is empty
-      setError(Error("Input cannot be empty."));
-    } else {
-      // Clear any existing error and add the task
-      setError(null);
-      addTask(value);
-      setValue("");
+    const trimmedText = text.trim();
+    if (trimmedText) {
+      addTask(trimmedText);
+      setText("");
     }
   };
 
@@ -38,11 +33,11 @@ export default function TaskInput() {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
+        value={text}
+        maxLength={255}
+        onChange={(e) => setText(e.target.value)}
       />
-      <button disabled={!value}>Add Task</button>
-      {error && <p>{error.message}</p>}
+      <button disabled={!text.trim()}>Add Task</button>
     </form>
   );
 }

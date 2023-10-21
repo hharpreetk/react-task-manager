@@ -4,6 +4,7 @@ import { useTasksDispatch } from "./TasksContext";
 export default function Task({ task }) {
   // State for handling task text editing
   const [editing, setEditing] = useState(false);
+  const [editedText, setEditedText] = useState(task.text); // State to track edited text
 
   // Access tasks state and dispatch function from context
   const dispatch = useTasksDispatch();
@@ -27,11 +28,21 @@ export default function Task({ task }) {
     textContent = (
       <>
         <input
-          value={task.text}
-          onChange={(e) => modifyTask(task.id, e.target.value, task.done)}
+          value={editedText}
+          maxLength={255}
+          onChange={(e) => setEditedText(e.target.value)}
           required
         />
-        <button onClick={() => setEditing(false)}>Save</button>
+        <button
+          onClick={() => {
+            setEditing(false);
+            const trimmedEditedText = editedText.trim();
+            if (trimmedEditedText) modifyTask(task.id, trimmedEditedText, task.done); // Save the edited text
+          }}
+          disabled={!editedText.trim()} // Disable the  button when there's no text input
+        >
+          Save
+        </button>
       </>
     );
   } else {
