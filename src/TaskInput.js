@@ -37,14 +37,14 @@ export default function TaskInput() {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
+          viewBox="-1 0 24 24"
+          strokeWidth="1.5"
           stroke="currentColor"
           className="-mx-0.5 h-6 w-6 text-primary"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
           />
         </svg>
@@ -54,7 +54,7 @@ export default function TaskInput() {
           maxLength={255}
           onChange={(e) => setText(e.target.value)}
           className="min-w-0 flex-1 border-none bg-transparent p-1 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-0 dark:text-white"
-          placeholder="Try typing here..."
+          placeholder="Enter your tasks here..."
           autoFocus
         />
       </form>
