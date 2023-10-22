@@ -23,5 +23,3 @@ yarn-debug.log*
 yarn-error.log*
 
 .eslintrc
-prettier.config.js
-tailwind.config.js
