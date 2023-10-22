@@ -1,7 +1,7 @@
-export default function Navbar({darkMode, toggleDarkMode}) {
+export default function Navbar({ darkMode, toggleDarkMode }) {
   return (
-    <nav className="bg-primary">
-      <div className="mx-auto flex flex-wrap items-center justify-between px-6 py-2">
+    <nav className="dark:bg-secondary bg-white px-4 py-3 sm:px-6 border-t-2">
+      <div className="mx-auto flex flex-nowrap items-center justify-between gap-3">
         <a href="." className="flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -9,7 +9,7 @@ export default function Navbar({darkMode, toggleDarkMode}) {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="h-5 w-5 text-white"
+            className="h-5 w-5 text-secondary dark:text-white"
           >
             <path
               strokeLinecap="round"
@@ -18,11 +18,17 @@ export default function Navbar({darkMode, toggleDarkMode}) {
             />
           </svg>
         </a>
+        <input
+          type="text"
+          id="search-navbar"
+          className="border-2 block w-full max-w-xl rounded-sm p-1.5 pl-4 border-slate-300 dark:focus:border-0 focus:ring-0 dark:border-0 dark:bg-primary dark:text-white dark:placeholder:text-indigo-100"
+          placeholder="Search..."
+        />
         <div className="flex">
           <button
             id="theme-toggle"
             type="button"
-            className="rounded-lg p-2.5 text-sm text-white focus:outline-none focus:ring-0"
+            className="rounded-lg text-sm dark:text-white text-secondary focus:outline-none focus:ring-0"
             onClick={toggleDarkMode}
           >
             <svg
@@ -43,8 +49,8 @@ export default function Navbar({darkMode, toggleDarkMode}) {
             >
               <path
                 d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
               ></path>
             </svg>
           </button>
