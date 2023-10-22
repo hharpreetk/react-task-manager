@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Configuration Files
+tailwind.config.js
+prettier.config.js
+.eslintrc
