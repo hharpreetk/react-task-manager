@@ -1,15 +1,24 @@
-export default function Navbar({ darkMode, toggleDarkMode }) {
+import { useTheme } from "./ThemeContext";
+
+export default function Navbar() {
+  // Access theme state from context
+  const { darkMode, toggleDarkMode } = useTheme();
+
   return (
-    <nav className="dark:bg-secondary bg-white px-4 py-3 sm:px-6 border-t-2">
+    <nav
+      className="dark:bg-secondary border-t-2 bg-white px-4 py-3 sm:px-6"
+      role="navigation"
+    >
       <div className="mx-auto flex flex-nowrap items-center justify-between gap-3">
-        <a href="." className="flex items-center">
+        <a href="." className="flex items-center" aria-label="Home">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="h-5 w-5 text-secondary dark:text-white"
+            className="text-secondary h-5 w-5 dark:text-white"
+            alt="Home Icon"
           >
             <path
               strokeLinecap="round"
@@ -21,14 +30,16 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
         <input
           type="text"
           id="search-navbar"
-          className="border-2 block w-full max-w-xl rounded-sm p-1.5 pl-4 border-slate-300 dark:focus:border-0 focus:ring-0 dark:border-0 dark:bg-primary dark:text-white dark:placeholder:text-indigo-100"
+          className="block w-full max-w-xl rounded-sm border-2 border-slate-300 p-1.5 pl-4 focus:ring-0 dark:border-0 dark:bg-primary dark:text-white dark:placeholder:text-indigo-100 dark:focus:border-0"
           placeholder="Search..."
+          aria-label="Search"
         />
         <div className="flex">
           <button
             id="theme-toggle"
             type="button"
-            className="rounded-lg text-sm dark:text-white text-secondary focus:outline-none focus:ring-0"
+            className="text-secondary rounded-lg text-sm focus:outline-none focus:ring-0 dark:text-white"
+            aria-label={`Toggle ${darkMode ? "Light" : "Dark"} Mode`}
             onClick={toggleDarkMode}
           >
             <svg
@@ -37,6 +48,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
+              alt="Dark Mode Icon"
             >
               <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
             </svg>
@@ -46,6 +58,7 @@ export default function Navbar({ darkMode, toggleDarkMode }) {
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
+              alt="Light Mode Icon"
             >
               <path
                 d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
