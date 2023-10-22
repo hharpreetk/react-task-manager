@@ -40,7 +40,7 @@ export default function TaskInput() {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="-mx-0.5 h-6 w-6 text-primary"
+          className="-mx-0.5 h-6 w-6 text-primary"
         >
           <path
             stroke-linecap="round"
