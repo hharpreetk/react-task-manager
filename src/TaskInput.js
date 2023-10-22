@@ -32,7 +32,7 @@ export default function TaskInput() {
     <div className="addTask mx-auto w-full max-w-6xl">
       <form
         onSubmit={handleSubmit}
-        className="bg-light dark:bg-dark m-5 flex items-center gap-2 px-4 py-3"
+        className="m-5 flex items-center gap-2 bg-light px-4 py-3 dark:bg-dark"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@ export default function TaskInput() {
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          class="text-primary -mx-0.5 h-6 w-6"
+          class="-mx-0.5 h-6 w-6 text-primary"
         >
           <path
             stroke-linecap="round"
@@ -53,17 +53,10 @@ export default function TaskInput() {
           value={text}
           maxLength={255}
           onChange={(e) => setText(e.target.value)}
-          className="min-w-0 flex-1 border-none bg-transparent p-1 focus:outline-none focus:ring-0 dark:text-white"
-          placeholder="Try Typing here..."
+          className="min-w-0 flex-1 border-none bg-transparent p-1 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-0 dark:text-white"
+          placeholder="Try typing here..."
           autoFocus
         />
-        <button
-          disabled={!text.trim()}
-          aria-label="Add"
-          className="bg-primary hover:bg-primary_hover disabled:bg-gray-200 rounded-lg px-3 py-2 text-center text-sm font-medium text-white focus:outline-none focus:ring-0 disabled:text-gray-500 dark:disabled:bg-opacity-10 dark:disabled:text-gray-500"
-        >
-          Add
-        </button>
       </form>
     </div>
   );

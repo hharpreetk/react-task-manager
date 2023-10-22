@@ -14,7 +14,7 @@ export default function TaskList() {
         {tasks.map((task) => (
           <li
             key={task.id}
-            className="border-r-1 bg-light dark:bg-dark mt-2 flex cursor-pointer flex-wrap items-center gap-3 px-4 shadow-sm hover:bg-gray-50 dark:hover:bg-slate-950"
+            className="border-r-1 mt-2 flex cursor-pointer flex-wrap items-center gap-3 bg-light px-4 shadow-sm hover:bg-gray-50 dark:bg-dark dark:hover:bg-slate-950"
           >
             <Task task={task} />
           </li>

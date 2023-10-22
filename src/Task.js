@@ -38,10 +38,7 @@ export default function Task({ task }) {
   if (editing) {
     // Display an input field for editing
     textContent = (
-      <form
-        onSubmit={handleSave}
-        className="flex flex-1"
-      >
+      <form onSubmit={handleSave} className="flex min-w-0 flex-1">
         <input
           value={editedText}
           className="my-2.5 min-w-0 flex-1 border-none bg-transparent px-0 py-1 focus:outline-none focus:ring-0 dark:text-white"
@@ -50,15 +47,16 @@ export default function Task({ task }) {
           onChange={(e) => setEditedText(e.target.value)}
         />
         <button
+          aria-label="Save"
           disabled={!editedText.trim()} // Disable the  button when there's no text input
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            stroke-width={1.6}
             stroke="currentColor"
-            class="text-primary h-6 w-6"
+            class="h-6 w-6 text-primary -mr-0.5 ml-0.5"
           >
             <path
               stroke-linecap="round"
@@ -73,17 +71,17 @@ export default function Task({ task }) {
     // Display task text and an 'Edit' button
     textContent = (
       <>
-        <p className="my-3.5 mb-4 flex-1 break-words leading-5 dark:text-white">
+        <p className="my-4 flex-1 break-words leading-5 text-slate-700 dark:text-white">
           {task.text}
         </p>
-        <button onClick={() => setEditing(true)}>
+        <button onClick={() => setEditing(true)} aria-label="Edit">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={1.5}
+            strokeWidth={1.7}
             stroke="currentColor"
-            className="text-primary h-5 w-5"
+            className="h-5 w-5 text-primary"
           >
             <path
               strokeLinecap="round"
@@ -105,17 +103,17 @@ export default function Task({ task }) {
         onChange={(e) => {
           modifyTask(task.id, task.text, e.target.checked);
         }}
-        className="border-primary dark:border-primary text-primary dark:text-primary dark:checked:bg-primary bg-transparent cursor-pointer rounded-full border-2 p-2 focus:ring-0"
+        className="cursor-pointer rounded-full border-2 border-primary bg-transparent p-2 text-primary focus:ring-white dark:border-primary dark:text-primary dark:checked:bg-primary dark:focus:ring-dark"
       />
       {textContent}
-      <button onClick={() => deleteTask(task.id)}>
+      <button onClick={() => deleteTask(task.id)} aria-label="Delete">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth={1.5}
+          strokeWidth={1.7}
           stroke="currentColor"
-          className="text-primary h-5 w-5"
+          className="h-5 w-5 text-primary"
         >
           <path
             strokeLinecap="round"
