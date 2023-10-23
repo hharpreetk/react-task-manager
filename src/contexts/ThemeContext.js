@@ -6,7 +6,9 @@ const ThemeContext = createContext();
 // Define the ThemeProvider component, which will wrap the entire application
 export function ThemeProvider({ children }) {
   // Define the initial theme
-  let initialTheme = localStorage.getItem("theme") || "light";
+  let initialTheme = localStorage.getItem("theme");
+  if (initialTheme ?? !(initialTheme === "light" || initialTheme === "dark"))
+    initialTheme = "light";
 
   // Define the state for the theme
   const [theme, setTheme] = useState(initialTheme);
