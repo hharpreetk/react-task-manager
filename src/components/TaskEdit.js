@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTasks } from "./TasksContext";
+import { useTasks } from "../contexts/TasksContext";
 
 export default function TaskEdit({ task, onSave }) {
   // State to track the edited text

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useTasks } from "./TasksContext";
+import { useTasks } from "../contexts/TasksContext";
 
 export default function TaskInput() {
   // State for input text

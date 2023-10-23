@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useTasks } from "./TasksContext";
+import { useTasks } from "../contexts/TasksContext";
 import TaskTextEdit from "./TaskEdit";
 import TaskDisplay from "./TaskDisplay";
 
