@@ -1,30 +1,39 @@
-import React, { createContext, useContext, useMemo, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 // Create a new context for managing the theme
 const ThemeContext = createContext();
 
 // Define the ThemeProvider component, which will wrap the entire application
 export function ThemeProvider({ children }) {
+  // Define the initial theme
+  let initialTheme = localStorage.getItem("theme") || "light";
+
   // Define the state for the theme
-  const [darkMode, setDarkMode] = useState(true);
+  const [theme, setTheme] = useState(initialTheme);
 
   // Function to toggle the theme
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+  const toggleTheme = () => {
+    setTheme((prevTheme) => {
+      const newTheme = prevTheme === "light" ? "dark" : "light";
+      localStorage.setItem("theme", newTheme);
+      return newTheme;
+    });
   };
 
-  // Create a memorized object containing theme-related properties
-  const theme = useMemo(() => {
-    return {
-      darkMode,
-      toggleDarkMode,
-      // Add other theme-related properties here, colors, fonts, etc
-    };
-  }, [darkMode]);
+  // Use an effect to set the theme based on localStorage on component mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    // Check for valid theme value stored in localStorage
+    if (savedTheme && (savedTheme === "light" || savedTheme === "dark")) {
+      setTheme(savedTheme);
+    }
+  }, []);
 
   // Return the ThemeProvider, providing theme context to the children
   return (
-    <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
   );
 }
 

@@ -2,11 +2,11 @@ import { useTheme } from "../contexts/ThemeContext";
 
 export default function Navbar() {
   // Access theme state from context
-  const { darkMode, toggleDarkMode } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <nav
-      className="dark:bg-secondary border-t-2 bg-white px-4 py-3 sm:px-6"
+      className="border-t-2 bg-white px-4 py-3 dark:bg-secondary sm:px-6"
       role="navigation"
     >
       <div className="mx-auto flex flex-nowrap items-center justify-between gap-3">
@@ -17,7 +17,7 @@ export default function Navbar() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="text-secondary h-5 w-5 dark:text-white"
+            className="h-5 w-5 text-secondary dark:text-white"
             alt="Home Icon"
           >
             <path
@@ -30,7 +30,7 @@ export default function Navbar() {
         <input
           type="text"
           id="search-navbar"
-          className="block w-full max-w-xl rounded-sm border-2 border-slate-300 p-1.5 pl-4 focus:ring-0 dark:border-0 dark:bg-primary dark:text-white dark:placeholder:text-indigo-100 dark:focus:border-0"
+          className="block w-full max-w-xl rounded-sm border-2 border-slate-300 p-1.5 pl-3 focus:ring-0 dark:border-0 dark:bg-primary dark:text-white dark:placeholder:text-indigo-100 dark:focus:border-0"
           placeholder="Search..."
           aria-label="Search"
         />
@@ -38,13 +38,13 @@ export default function Navbar() {
           <button
             id="theme-toggle"
             type="button"
-            className="text-secondary rounded-lg text-sm focus:outline-none focus:ring-0 dark:text-white"
-            aria-label={`Toggle ${darkMode ? "Light" : "Dark"} Mode`}
-            onClick={toggleDarkMode}
+            className="rounded-lg text-sm text-secondary focus:outline-none focus:ring-0 dark:text-white"
+            aria-label={`Toggle ${theme === "dark" ? "Light" : "Dark"} Mode`}
+            onClick={toggleTheme}
           >
             <svg
               id="theme-toggle-dark-icon"
-              className={`${darkMode ? "" : "hidden"} h-5 w-5`}
+              className={`${theme === "dark" ? "hidden" : ""} h-5 w-5`}
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ export default function Navbar() {
             </svg>
             <svg
               id="theme-toggle-light-icon"
-              className={`${darkMode ? "hidden" : ""} h-5 w-5`}
+              className={`${theme === "light" ? "hidden" : ""} h-5 w-5`}
               fill="currentColor"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
