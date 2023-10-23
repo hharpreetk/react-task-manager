@@ -1,4 +1,5 @@
 import { useTheme } from "../contexts/ThemeContext";
+import SearchInput from "./SearchInput";
 
 export default function Navbar() {
   // Access theme state from context
@@ -9,7 +10,7 @@ export default function Navbar() {
       className="border-t-2 bg-white px-4 py-3 dark:bg-secondary sm:px-6"
       role="navigation"
     >
-      <div className="mx-auto flex flex-nowrap items-center justify-between gap-3">
+      <div className="mx-auto flex flex-nowrap items-center justify-between gap-4">
         <a href="." className="flex items-center" aria-label="Home">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -27,13 +28,7 @@ export default function Navbar() {
             />
           </svg>
         </a>
-        <input
-          type="text"
-          id="search-navbar"
-          className="block w-full max-w-xl rounded-sm border-2 border-slate-300 p-1.5 pl-3 focus:ring-0 dark:border-0 dark:bg-primary dark:text-white dark:placeholder:text-indigo-100 dark:focus:border-0"
-          placeholder="Search..."
-          aria-label="Search"
-        />
+        <SearchInput />
         <div className="flex">
           <button
             id="theme-toggle"
