@@ -1,6 +1,6 @@
-import { useTheme } from "../ThemeContext";
+import { useTheme } from "../contexts/ThemeContext";
 import Navbar from "./Navbar";
-import { TasksProvider } from "../TasksContext";
+import { TasksProvider } from "../contexts/TasksContext";
 import TaskList from "./TaskList";
 import TaskInput from "./TaskInput";
 

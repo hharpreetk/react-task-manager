@@ -1,6 +1,6 @@
 
-import { ThemeProvider } from "./ThemeContext";
-import AppContent from "./AppContent";
+import { ThemeProvider } from "./contexts/ThemeContext";
+import AppContent from "./components/AppContent";
 
 export default function App() {
   return (
