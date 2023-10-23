@@ -1,116 +1,38 @@
 import { useState } from "react";
 import { useTasks } from "./TasksContext";
+import TaskTextEdit from "./TaskEdit";
+import TaskDisplay from "./TaskDisplay";
 
 export default function Task({ task }) {
-  // State for handling task text editing
+  // State to track if the task is in editing mode
   const [editing, setEditing] = useState(false);
-  const [editedText, setEditedText] = useState(task.text); // State to track edited text
-
-  // Access dispatch function from context
+  // Access the dispatch function from the TasksContext
   const { dispatch } = useTasks();
 
-  // Function to handle saving changes when the "Save" button is clicked
-  const handleSave = () => {
-    // Check if the trimmed edited text is not empty
-    const trimmedEditedText = editedText.trim();
-    // Call the function to modify the task
-    if (trimmedEditedText) modifyTask(task.id, trimmedEditedText, task.done);
-    // Switch back to task text display
-    setEditing(false);
+  // Function to toggle between editing and non-editing modes
+  const toggleEditing = () => {
+    setEditing(!editing);
   };
 
-  // Function to modify an existing task (update text and done status)
-  const modifyTask = (id, text, done) => {
-    if (text !== task.text || done !== task.done) {
-      // Dispatch an action to modify the task only if changes are made
-      dispatch({ type: "modify", id, text, done });
-    }
+  // Function to toggle the status (complete/incomplete) of the task
+  const toggleTaskStatus = () => {
+    // Dispatch an action to modify the task's status
+    dispatch({
+      type: "modify",
+      id: task.id,
+      text: task.text,
+      done: !task.done,
+    });
   };
 
-  // Function to delete a task
-  const deleteTask = (id) => {
-    // Dispatch an aciton to delete the task
-    dispatch({ type: "delete", id });
+  // Function to delete the task
+  const deleteTask = () => {
+    // Dispatch an action to delete the task
+    dispatch({ type: "delete", id: task.id });
   };
-
-  let textContent;
-
-  if (editing) {
-    // Display an input field for editing
-    textContent = (
-      <form onSubmit={handleSave} className="flex min-w-0 flex-1">
-        <input
-          value={editedText}
-          className="my-2.5 min-w-0 flex-1 border-none bg-transparent px-0 py-1 focus:outline-none focus:ring-0 dark:text-white"
-          maxLength={255}
-          autoFocus
-          onChange={(e) => setEditedText(e.target.value)}
-        />
-        <button
-          aria-label="Save"
-          disabled={!editedText.trim()} // Disable the  button when there's no text input
-        >
-          {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width={1.6}
-            stroke="currentColor"
-            className="m-0.5 h-5 w-5 text-primary"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 019 9v.375M10.125 2.25A3.375 3.375 0 0113.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 013.375 3.375M9 15l2.25 2.25L15 12"
-            />
-          </svg> */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="-1 0 24 24"
-            stroke-width={1.6}
-            stroke="currentColor"
-            className="ml-0.5 h-6 w-6 text-primary"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-        </button>
-      </form>
-    );
-  } else {
-    // Display task text and an 'Edit' button
-    textContent = (
-      <>
-        <p className="text-font my-4 flex-1 break-words leading-5 dark:text-white">
-          {task.text}
-        </p>
-        <button onClick={() => setEditing(true)} aria-label="Edit">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.7}
-            stroke="currentColor"
-            className="text-icon h-5 w-5 hover:text-primary dark:text-white dark:hover:text-primary"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"
-            />
-          </svg>
-        </button>
-      </>
-    );
-  }
 
   return (
     <li
-      key={task.id}
       className={`border-r-1 mb-2 flex w-full cursor-pointer flex-wrap items-center gap-3 bg-light px-5 shadow-sm hover:bg-slate-200 dark:bg-dark dark:hover:bg-slate-950 ${
         editing ? "bg-slate-200 dark:bg-slate-950" : ""
       }`}
@@ -118,21 +40,24 @@ export default function Task({ task }) {
       <input
         type="checkbox"
         checked={task.done}
-        aria-label="Toggles the task between complete and incomplete"
-        onChange={(e) => {
-          modifyTask(task.id, task.text, e.target.checked);
-        }}
+        aria-label={`Mark Task as ${task.done ? "Incomplete" : "Complete"}`}
+        onChange={toggleTaskStatus}
         className="cursor-pointer rounded-full border-2 border-primary bg-transparent p-2 text-primary focus:ring-0 dark:border-primary dark:text-primary dark:checked:bg-primary dark:focus:ring-dark"
       />
-      {textContent}
-      <button onClick={() => deleteTask(task.id)} aria-label="Delete">
+      {editing ? (
+        // Conditional rendering of TaskDisplay or TaskEdit component
+        <TaskTextEdit task={task} onSave={toggleEditing} />
+      ) : (
+        <TaskDisplay task={task} onEdit={toggleEditing} />
+      )}
+      <button onClick={deleteTask} aria-label="Delete Task">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.7}
           stroke="currentColor"
-          className="text-icon h-5 w-5 hover:text-primary dark:text-white dark:hover:text-primary"
+          className="h-5 w-5 text-icon hover:text-primary dark:text-white dark:hover:text-primary"
         >
           <path
             strokeLinecap="round"
