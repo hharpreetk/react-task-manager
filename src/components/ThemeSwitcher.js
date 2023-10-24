@@ -5,14 +5,12 @@ export default function ThemeSwitcher() {
   return (
     <div className="flex">
       <button
-        id="theme-toggle"
         type="button"
         className="rounded-lg text-sm text-secondary focus:outline-none focus:ring-0 dark:text-white"
         aria-label={`Toggle ${theme === "dark" ? "Light" : "Dark"} Mode`}
         onClick={toggleTheme}
       >
         <svg
-          id="theme-toggle-dark-icon"
           className={`${theme === "dark" ? "hidden" : ""} h-5 w-5`}
           fill="currentColor"
           viewBox="0 0 20 20"
@@ -22,7 +20,6 @@ export default function ThemeSwitcher() {
           <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
         </svg>
         <svg
-          id="theme-toggle-light-icon"
           className={`${theme === "light" ? "hidden" : ""} h-5 w-5`}
           fill="currentColor"
           viewBox="0 0 20 20"
