@@ -27,12 +27,15 @@ export default function TaskEdit({ task, onSave }) {
   return (
     <form onSubmit={saveChanges} className="flex min-w-0 flex-1">
       <input
+        type="text"
+        id="editedText"
         value={editedText}
         className="my-2.5 min-w-0 flex-1 border-none bg-transparent px-0 py-1 focus:outline-none focus:ring-0 dark:text-white"
         maxLength={255}
-        autoFocus
         aria-label="Edit Task Text"
         onChange={(e) => setEditedText(e.target.value)}
+        autoComplete="off"
+        autoFocus
       />
       <button aria-label="Save Changes" disabled={!editedText.trim()}>
         <svg

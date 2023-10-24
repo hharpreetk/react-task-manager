@@ -39,6 +39,7 @@ export default function Task({ task }) {
     >
       <input
         type="checkbox"
+        id={`checkbox${task.id}`}
         checked={task.done}
         aria-label={`Mark Task as ${task.done ? "Incomplete" : "Complete"}`}
         onChange={toggleTaskStatus}
