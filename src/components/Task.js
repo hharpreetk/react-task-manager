@@ -3,7 +3,7 @@ import { useTasks } from "../contexts/TasksContext";
 import TaskTextEdit from "./TaskEdit";
 import TaskDisplay from "./TaskDisplay";
 
-export default function Task({ task }) {
+export default function Task({ task, dragging }) {
   // State to track if the task is in editing mode
   const [editing, setEditing] = useState(false);
   // Access the dispatch function from the TasksContext
@@ -33,8 +33,12 @@ export default function Task({ task }) {
 
   return (
     <div
-      className={`border-r-1 mb-2 flex w-full cursor-pointer flex-wrap items-center gap-3 bg-light px-5 shadow-sm hover:bg-slate-200  hover:bg-opacity-60 dark:bg-dark dark:hover:bg-slate-950 ${
+      className={`border-r-1 mb-2 flex w-full cursor-pointer flex-wrap items-center gap-3 bg-light px-5 shadow-sm hover:bg-slate-200 hover:bg-opacity-60 dark:bg-dark dark:hover:bg-slate-950 ${
         editing ? "bg-slate-200 dark:bg-slate-950" : ""
+      } ${
+        dragging
+          ? "border-1 border-primary bg-slate-200 shadow-slate-400 dark:bg-slate-950 dark:shadow-slate-950"
+          : "bg-light dark:bg-black"
       }`}
     >
       <input

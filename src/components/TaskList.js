@@ -54,7 +54,7 @@ export default function TaskList() {
     <div className="tasks mx-auto w-full max-w-6xl">
       <DragDropContext onDragEnd={onDragEnd}>
         <StrictModeDroppable droppableId="task-list">
-          {(provided) => (
+          {(provided, snapshot) => (
             <ul
               {...provided.droppableProps}
               ref={provided.innerRef}
@@ -67,13 +67,13 @@ export default function TaskList() {
                   draggableId={task.id.toString()}
                   index={index}
                 >
-                  {(provided) => (
+                  {(provided, snapshot) => (
                     <li
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                     >
-                      <Task task={task} />
+                      <Task task={task} dragging={snapshot.isDragging} />
                     </li>
                   )}
                 </Draggable>
