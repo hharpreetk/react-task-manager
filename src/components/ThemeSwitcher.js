@@ -6,7 +6,7 @@ export default function ThemeSwitcher() {
     <div className="flex">
       <button
         type="button"
-        className="rounded-lg text-sm text-secondary focus:outline-none focus:ring-0 dark:text-white"
+        className="rounded-lg text-sm text-secondary focus:ring-0 dark:text-white dark:focus:outline-white"
         aria-label={`Toggle ${theme === "dark" ? "Light" : "Dark"} Mode`}
         onClick={toggleTheme}
       >

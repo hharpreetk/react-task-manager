@@ -72,6 +72,7 @@ export default function TaskList() {
                       ref={provided.innerRef}
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
+                      className="mb-2"
                     >
                       <Task task={task} dragging={snapshot.isDragging} />
                     </li>

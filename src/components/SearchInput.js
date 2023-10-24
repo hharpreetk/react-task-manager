@@ -21,6 +21,7 @@ export default function SearchInput() {
         placeholder="Search..."
         aria-label="Search Tasks"
         onChange={handleSearchInput}
+        autoFocus
       />
       {searchQuery ? (
         <button

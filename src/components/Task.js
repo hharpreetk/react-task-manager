@@ -33,7 +33,7 @@ export default function Task({ task, dragging }) {
 
   return (
     <div
-      className={`border-r-1 mb-2 flex w-full cursor-pointer flex-wrap items-center gap-3 bg-light px-5 shadow-sm hover:bg-slate-200 hover:bg-opacity-60 dark:bg-dark dark:hover:bg-slate-950 ${
+      className={`border-r-1 flex w-full cursor-pointer flex-wrap items-center gap-3 bg-light px-5 shadow-sm hover:bg-slate-200 hover:bg-opacity-60 dark:bg-dark dark:hover:bg-slate-950 ${
         editing ? "bg-slate-200 dark:bg-slate-950" : ""
       } ${
         dragging
