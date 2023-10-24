@@ -37,13 +37,16 @@ export default function TaskList() {
     }
 
     // Reorder the tasks based on the drag-and-drop result
-    const reorderedTasks = [...tasks]; // Create a copy of the tasks array
+    const reorderedTasks = [...incompleteTasks]; // Create a copy of the tasks array
     // Move the task from old index to new index in the array
     const [movedTask] = reorderedTasks.splice(result.source.index, 1); // Remove the task from source index
     reorderedTasks.splice(destination.index, 0, movedTask); // Insert the moved task back into the array at destination index
 
     // Dispatch a reorder action to update the tasks in the context
-    dispatch({ type: "reorder", tasks: reorderedTasks });
+    dispatch({
+      type: "reorder",
+      tasks: [...reorderedTasks, ...completedTasks],
+    });
   };
 
   // Render a list of tasks
