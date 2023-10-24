@@ -32,7 +32,7 @@ export default function TaskInput() {
     <div className="addTask mx-auto w-full max-w-6xl">
       <form
         onSubmit={handleSubmit}
-        className="m-5 flex items-center gap-2 bg-light px-4 py-3 dark:bg-dark"
+        className="mx-5 mb-3 mt-5 flex items-center gap-2 bg-light px-4 py-3 dark:bg-dark"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -1,7 +1,11 @@
 export default function TaskDisplay({ task, onEdit }) {
   return (
     <>
-      <p className="my-4 flex-1 break-words leading-5 text-font dark:text-white">
+      <p
+        className={`my-4 flex-1 break-words leading-5 text-font dark:text-white ${
+          task.done ? "line-through" : " "
+        }`}
+      >
         {task.text}
       </p>
       <button onClick={onEdit} aria-label="Edit Task Text">

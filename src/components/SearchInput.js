@@ -12,7 +12,7 @@ export default function SearchInput() {
   };
 
   return (
-    <div className="align-center flex w-full max-w-xl rounded-sm border-2 border-slate-300 px-2.5 dark:border-0 dark:bg-primary">
+    <div className="align-center flex w-full max-w-xl rounded-sm border-2 border-slate-300 px-2.5 dark:border-2 dark:border-transparent dark:bg-primary">
       <input
         type="text"
         id="searchQuery"
