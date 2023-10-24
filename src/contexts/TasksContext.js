@@ -49,6 +49,10 @@ const tasksReducer = (tasks, action) => {
     case "delete": {
       return tasks.filter((task) => task.id !== action.id);
     }
+    case "reorder": {
+      // Update the tasks with the new order
+      return action.tasks;
+    }
     default:
       return tasks;
   }

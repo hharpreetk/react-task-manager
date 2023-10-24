@@ -7,7 +7,7 @@ import { StrictModeDroppable } from "./Droppable";
 
 export default function TaskList() {
   // Access tasks state from context
-  const { tasks } = useTasks();
+  const { tasks, dispatch } = useTasks();
   const { searchQuery } = useSearchQuery();
 
   if (!tasks || tasks.length === 0) return; // Early return if there are no tasks
@@ -22,10 +22,28 @@ export default function TaskList() {
   const incompleteTasks = filteredTasks.filter((task) => !task.done);
 
   const onDragEnd = (result) => {
-    if (!result.destination) {
+    const { destination, source } = result;
+    // Exit when there is no destination
+    if (!destination) {
       return;
     }
-    //TODO: Reorder the tasks based on the drag-and-drop result
+
+    // Exit if the destination did not change
+    if (
+      destination.droppableId === source.droppableId &&
+      destination.index === source.index
+    ) {
+      return;
+    }
+
+    // Reorder the tasks based on the drag-and-drop result
+    const reorderedTasks = [...tasks]; // Create a copy of the tasks array
+    // Move the task from old index to new index in the array
+    const [movedTask] = reorderedTasks.splice(result.source.index, 1); // Remove the task from source index
+    reorderedTasks.splice(destination.index, 0, movedTask); // Insert the moved task back into the array at destination index
+
+    // Dispatch a reorder action to update the tasks in the context
+    dispatch({ type: "reorder", tasks: reorderedTasks });
   };
 
   // Render a list of tasks
@@ -37,7 +55,7 @@ export default function TaskList() {
             <ul
               {...provided.droppableProps}
               ref={provided.innerRef}
-              className="mx-5 my-2 flex flex-1 list-none flex-col gap-2"
+              className="mx-5 my-2 flex flex-1 list-none flex-col"
               aria-label="List of tasks"
             >
               {incompleteTasks.map((task, index) => (
