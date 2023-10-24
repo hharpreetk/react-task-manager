@@ -34,11 +34,7 @@ export default function TaskEdit({ task, onSave }) {
         aria-label="Edit Task Text"
         onChange={(e) => setEditedText(e.target.value)}
       />
-      <button
-        onClick={saveChanges}
-        aria-label="Save Changes"
-        disabled={!editedText.trim()}
-      >
+      <button aria-label="Save Changes" disabled={!editedText.trim()}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

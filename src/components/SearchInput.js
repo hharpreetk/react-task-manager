@@ -1,31 +1,28 @@
-import { useState } from "react";
+import { useSearchQuery } from "../contexts/SearchQueryContext";
 
 export default function SearchInput() {
-  const [searchInput, setSearchInput] = useState("");
+  const { searchQuery, setSearchQuery } = useSearchQuery();
 
   const handleSearchInput = (e) => {
-    e.preventDefault();
+    setSearchQuery(e.target.value);
   };
 
   const handleReset = () => {
-    setSearchInput("");
+    setSearchQuery("");
   };
 
   return (
-    <form
-      onSubmit={handleSearchInput}
-      className="align-center flex w-full max-w-xl border-2 border-slate-300 px-2.5 dark:border-0 dark:bg-primary"
-    >
+    <div className="align-center flex w-full max-w-xl rounded-sm border-2 border-slate-300 px-2.5 dark:border-0 dark:bg-primary">
       <input
         type="text"
         id="search-navbar"
-        value={searchInput}
-        className="block w-full rounded-sm border-0 p-1.5 focus:ring-0 dark:bg-primary dark:text-white dark:placeholder:text-indigo-100 dark:focus:border-0"
+        value={searchQuery}
+        className="dark:text-fill-white block w-full border-0 p-1.5 autofill:shadow-[inset_0_0_0px_1000px_rgb(255,255,255)] focus:ring-0 dark:bg-primary dark:text-white dark:placeholder:text-indigo-100 dark:autofill:shadow-[inset_0_0_0px_1000px_#6366f1] dark:focus:border-0"
         placeholder="Search..."
         aria-label="Search"
-        onChange={(e) => setSearchInput(e.target.value)}
+        onChange={handleSearchInput}
       />
-      {searchInput ? (
+      {searchQuery ? (
         <button
           type="reset"
           title="Clear"
@@ -44,6 +41,6 @@ export default function SearchInput() {
       ) : (
         <></>
       )}
-    </form>
+    </div>
   );
 }
