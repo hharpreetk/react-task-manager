@@ -4,6 +4,7 @@ export default function Menu() {
       <button
         className="p-2 text-icon hover:bg-slate-200 dark:text-white dark:hover:bg-indigo-600"
         aria-label="Menu"
+        title="Menu"
       >
         <svg
           className="h-6 w-6"

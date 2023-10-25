@@ -8,6 +8,7 @@ export default function ThemeSwitcher() {
         type="button"
         className="p-3 text-primary hover:bg-slate-200 dark:text-white dark:hover:bg-indigo-600"
         aria-label={`Toggle ${theme === "dark" ? "Light" : "Dark"} Mode`}
+        title="Switch betwen light and dark theme"
         onClick={toggleTheme}
       >
         <svg

@@ -33,8 +33,8 @@ export default function Task({ task, dragging }) {
 
   return (
     <div
-      className={`border-r-1 flex w-full cursor-pointer flex-wrap items-center bg-light px-3 py-0.5 shadow-sm hover:bg-slate-200 hover:bg-opacity-60 dark:bg-dark dark:hover:bg-slate-950 ${
-        editing ? "bg-slate-200 dark:bg-slate-950" : ""
+      className={`border-r-1 flex w-full cursor-pointer flex-wrap items-center bg-light px-3 py-0.5 shadow-sm hover:bg-slate-300 hover:bg-opacity-50 dark:bg-dark dark:hover:bg-slate-950 ${
+        editing ? "bg-slate-300 bg-opacity-70 dark:bg-slate-950" : ""
       } ${
         dragging
           ? "border-1 border-primary bg-slate-200 shadow-slate-400 dark:bg-slate-950 dark:shadow-slate-950"
@@ -47,7 +47,8 @@ export default function Task({ task, dragging }) {
         checked={task.done}
         aria-label={`Mark Task as ${task.done ? "Incomplete" : "Complete"}`}
         onChange={toggleTaskStatus}
-        className="m-2 cursor-pointer rounded-full border-2 border-primary bg-transparent p-2 text-primary focus:ring-primary dark:border-primary dark:text-primary dark:checked:bg-primary"
+        className="m-2 cursor-pointer rounded-full border-2 border-primary bg-transparent p-2 text-primary focus:ring-primary dark:border-primary dark:text-primary dark:checked:bg-primary dark:focus:ring-0"
+        title="Toggle the task betwen complete and incomplete"
       />
       {editing ? (
         // Conditional rendering of TaskDisplay or TaskEdit component
@@ -55,14 +56,19 @@ export default function Task({ task, dragging }) {
       ) : (
         <TaskDisplay task={task} onEdit={toggleEditing} />
       )}
-      <button onClick={deleteTask} aria-label="Delete Task" className="p-2">
+      <button
+        onClick={deleteTask}
+        aria-label="Delete Task"
+        className="p-2 text-icon hover:text-primary dark:text-white dark:hover:text-primary"
+        title="Delete Task"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.7}
           stroke="currentColor"
-          className="h-5 w-5 text-icon hover:text-primary dark:text-white dark:hover:text-primary"
+          className="h-5 w-5"
         >
           <path
             strokeLinecap="round"

@@ -56,6 +56,7 @@ export default function TaskInput() {
           onChange={(e) => setText(e.target.value)}
           className="min-w-0 flex-1 border-none bg-transparent p-1 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-0 dark:text-white"
           placeholder="Enter your task here..."
+          title="Enter Task"
           autoComplete="off"
           autoFocus
         />

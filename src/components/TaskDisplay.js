@@ -8,14 +8,19 @@ export default function TaskDisplay({ task, onEdit }) {
       >
         {task.text}
       </p>
-      <button onClick={onEdit} aria-label="Edit Task Text" className="p-2">
+      <button
+        onClick={onEdit}
+        aria-label="Edit Task Text"
+        className="p-2 text-icon hover:text-primary  dark:text-slate-100 dark:hover:text-primary"
+        title="Edit Task Text"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.7}
           stroke="currentColor"
-          className="h-5 w-5 text-icon hover:text-primary dark:text-white dark:hover:text-primary"
+          className="h-5 w-5"
         >
           <path
             strokeLinecap="round"
