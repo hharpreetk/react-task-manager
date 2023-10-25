@@ -7,7 +7,7 @@ import TaskInput from "./TaskInput";
 
 export default function AppContent() {
   // Access theme state from context
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
     <SearchQueryProvider>
@@ -16,7 +16,7 @@ export default function AppContent() {
         role="application"
       >
         <header role="banner">
-          <Navbar theme={theme} toggleTheme={toggleTheme} />
+          <Navbar />
         </header>
         <main
           className="flex w-full flex-1 flex-col overflow-auto bg-slate-100 dark:bg-slate-900"
