@@ -8,7 +8,7 @@ export default function Navbar() {
       className="border-t-2 bg-white px-4 py-3 dark:bg-secondary sm:px-6"
       role="navigation"
     >
-      <div className="mx-auto flex flex-nowrap items-center justify-between gap-4">
+      <div className="mx-auto flex flex-nowrap items-center justify-between gap-2">
         <Menu />
         <SearchInput />
         <ThemeSwitcher />

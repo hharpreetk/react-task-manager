@@ -6,31 +6,27 @@ export default function ThemeSwitcher() {
     <div className="flex">
       <button
         type="button"
-        className="rounded-lg text-sm text-secondary focus:ring-0 dark:text-white dark:focus:outline-white"
+        className="p-3 text-primary hover:bg-slate-200 dark:text-white dark:hover:bg-indigo-600"
         aria-label={`Toggle ${theme === "dark" ? "Light" : "Dark"} Mode`}
         onClick={toggleTheme}
       >
         <svg
-          className={`${theme === "dark" ? "hidden" : ""} h-5 w-5`}
-          fill="currentColor"
-          viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
+          className={`${theme === "dark" ? "hidden" : ""} h-4 w-4`}
+          fill="currentColor"
+          viewBox="0 0 18 20"
           alt="Dark Mode Icon"
         >
-          <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          <path d="M17.8 13.75a1 1 0 0 0-.859-.5A7.488 7.488 0 0 1 10.52 2a1 1 0 0 0 0-.969A1.035 1.035 0 0 0 9.687.5h-.113a9.5 9.5 0 1 0 8.222 14.247 1 1 0 0 0 .004-.997Z"></path>
         </svg>
         <svg
-          className={`${theme === "light" ? "hidden" : ""} h-5 w-5`}
+          xmlns="http://www.w3.org/2000/svg"
+          className={`${theme === "light" ? "hidden" : ""} h-4 w-4`}
           fill="currentColor"
           viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
           alt="Light Mode Icon"
         >
-          <path
-            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-            fillRule="evenodd"
-            clipRule="evenodd"
-          ></path>
+          <path d="M10 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-11a1 1 0 0 0 1-1V1a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1Zm0 12a1 1 0 0 0-1 1v2a1 1 0 1 0 2 0v-2a1 1 0 0 0-1-1ZM4.343 5.757a1 1 0 0 0 1.414-1.414L4.343 2.929a1 1 0 0 0-1.414 1.414l1.414 1.414Zm11.314 8.486a1 1 0 0 0-1.414 1.414l1.414 1.414a1 1 0 0 0 1.414-1.414l-1.414-1.414ZM4 10a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h2a1 1 0 0 0 1-1Zm15-1h-2a1 1 0 1 0 0 2h2a1 1 0 0 0 0-2ZM4.343 14.243l-1.414 1.414a1 1 0 1 0 1.414 1.414l1.414-1.414a1 1 0 0 0-1.414-1.414ZM14.95 6.05a1 1 0 0 0 .707-.293l1.414-1.414a1 1 0 1 0-1.414-1.414l-1.414 1.414a1 1 0 0 0 .707 1.707Z"></path>
         </svg>
       </button>
     </div>

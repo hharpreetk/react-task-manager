@@ -1,18 +1,45 @@
+import { useState } from "react";
+
 export default function Menu() {
+  const [showNavigation, setShowNavigation] = useState(false);
+  const toggleShowNavigation = () => {
+    setShowNavigation(!showNavigation);
+  };
   return (
-    <button className="text-secondary dark:text-white" aria-label="Menu">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-        className="h-5 w-5"
+    <>
+      <button
+        className="p-2 text-icon hover:bg-slate-200 dark:text-white dark:hover:bg-indigo-600"
+        aria-label="Open Menu"
+        onClick={toggleShowNavigation}
       >
-        <path
-          fillRule="evenodd"
-          d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10zm0 5.25a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75a.75.75 0 01-.75-.75z"
-          clipRule="evenodd"
-        />
-      </svg>
-    </button>
+        {showNavigation ? (
+          <svg
+            className="h-6 w-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            ></path>
+          </svg>
+        ) : (
+          <svg
+            className="h-6 w-6"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clipRule="evenodd"
+            ></path>
+          </svg>
+        )}
+      </button>
+    </>
   );
 }

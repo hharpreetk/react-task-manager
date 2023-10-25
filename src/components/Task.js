@@ -33,7 +33,7 @@ export default function Task({ task, dragging }) {
 
   return (
     <div
-      className={`border-r-1 flex w-full cursor-pointer flex-wrap items-center gap-3 bg-light px-5 shadow-sm hover:bg-slate-200 hover:bg-opacity-60 dark:bg-dark dark:hover:bg-slate-950 ${
+      className={`border-r-1 flex w-full cursor-pointer flex-wrap items-center bg-light px-3 py-0.5 shadow-sm hover:bg-slate-200 hover:bg-opacity-60 dark:bg-dark dark:hover:bg-slate-950 ${
         editing ? "bg-slate-200 dark:bg-slate-950" : ""
       } ${
         dragging
@@ -47,7 +47,7 @@ export default function Task({ task, dragging }) {
         checked={task.done}
         aria-label={`Mark Task as ${task.done ? "Incomplete" : "Complete"}`}
         onChange={toggleTaskStatus}
-        className="cursor-pointer rounded-full border-2 border-primary bg-transparent p-2 text-primary focus:ring-0 dark:border-primary dark:text-primary dark:checked:bg-primary dark:focus:ring-dark"
+        className="m-2 cursor-pointer rounded-full border-2 border-primary bg-transparent p-2 text-primary focus:ring-primary dark:border-primary dark:text-primary dark:checked:bg-primary"
       />
       {editing ? (
         // Conditional rendering of TaskDisplay or TaskEdit component
@@ -55,7 +55,7 @@ export default function Task({ task, dragging }) {
       ) : (
         <TaskDisplay task={task} onEdit={toggleEditing} />
       )}
-      <button onClick={deleteTask} aria-label="Delete Task">
+      <button onClick={deleteTask} aria-label="Delete Task" className="p-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

@@ -12,7 +12,7 @@ export default function SearchInput() {
   };
 
   return (
-    <div className="align-center flex w-full max-w-xl rounded-sm border-2 border-slate-300 px-2.5 dark:border-2 dark:border-transparent dark:bg-primary">
+    <div className="align-center flex w-full max-w-xl rounded-sm border-2 border-slate-300 pl-2.5 pr-0.5 dark:border-2 dark:border-transparent dark:bg-primary">
       <input
         type="text"
         id="searchQuery"
@@ -27,7 +27,7 @@ export default function SearchInput() {
         <button
           type="reset"
           title="Clear"
-          className="text-icon dark:text-white"
+          className="text-icon dark:text-white p-2"
           onClick={handleReset}
         >
           <svg
