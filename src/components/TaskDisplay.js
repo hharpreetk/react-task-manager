@@ -2,7 +2,7 @@ export default function TaskDisplay({ task, onEdit }) {
   return (
     <>
       <p
-        className={`mx-2 my-4 flex-1 break-all text-font dark:text-white ${
+        className={`mx-2 my-4 flex-1 break-words text-font first-letter:uppercase dark:text-white ${
           task.done ? "line-through" : " "
         }`}
       >
