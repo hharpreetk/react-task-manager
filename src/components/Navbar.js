@@ -5,7 +5,7 @@ import ThemeSwitcher from "./ThemeSwitcher";
 export default function Navbar() {
   return (
     <nav
-      className="border-y-2 bg-white px-3 py-3 dark:border-primary dark:bg-secondary md:px-6"
+      className="border-t-2 bg-white px-3 py-3 dark:border-primary dark:bg-secondary md:px-6"
       role="navigation"
     >
       <div className="mx-auto flex flex-nowrap items-center justify-between gap-2">
