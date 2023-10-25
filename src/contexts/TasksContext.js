@@ -1,9 +1,11 @@
-import { useReducer, useContext, createContext } from "react";
+import { useReducer, useContext, createContext, useEffect } from "react";
 
 const initialTasks = [
   { id: 0, text: "Add your first task", done: false },
   { id: 1, text: "Tap the circle to complete your task", done: false },
 ];
+
+const localStorageKey = "tasks"; // Key for storing tasks in localStorage
 
 // Create a context for tasks state and dispatch functions
 const TasksContext = createContext(null);
@@ -11,7 +13,12 @@ const TasksContext = createContext(null);
 // A Provider component to manage tasks state and dispatch
 export function TasksProvider({ children }) {
   // Set up the useReducer hook to manage tasks state with reducer
-  const [tasks, dispatch] = useReducer(tasksReducer, [...initialTasks]);
+  const [tasks, dispatch] = useReducer(tasksReducer, loadTasksFromStorage());
+
+  // Save the tasks to web storage whenever tasks change
+  useEffect(() => {
+    saveTasksToStorage(tasks);
+  }, [tasks]);
 
   return (
     // Provide task state and dispatch functions through context
@@ -57,3 +64,14 @@ const tasksReducer = (tasks, action) => {
       return tasks;
   }
 };
+
+// Load tasks from web storage (localStorage)
+function loadTasksFromStorage() {
+  const tasksJson = localStorage.getItem(localStorageKey);
+  return tasksJson ? JSON.parse(tasksJson) : [...initialTasks];
+}
+
+// Save tasks to web storage (localStorage)
+function saveTasksToStorage(tasks) {
+  localStorage.setItem(localStorageKey, JSON.stringify(tasks));
+}
