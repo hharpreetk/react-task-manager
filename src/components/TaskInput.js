@@ -40,7 +40,7 @@ export default function TaskInput() {
           viewBox="-1 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="-mx-0.5 h-6 w-6 text-primary"
+          className="-mx-0.5 h-6 w-6 text-primary my-1.5"
         >
           <path
             strokeLinecap="round"
@@ -54,7 +54,7 @@ export default function TaskInput() {
           value={text}
           maxLength={255}
           onChange={(e) => setText(e.target.value)}
-          className="min-w-0 flex-1 border-none bg-transparent p-1 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-0 dark:text-white"
+          className="min-w-0 ml-2 flex-1 border-none bg-transparent p-1 text-slate-700 placeholder:text-slate-400 focus:outline-none focus:ring-0 dark:text-white"
           placeholder="Enter your task here..."
           title="Enter Task"
           autoComplete="off"
